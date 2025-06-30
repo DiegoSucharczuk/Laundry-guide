@@ -254,6 +254,19 @@ select {
 .faq-question.open .faq-arrow {
   transform: rotate(90deg);
 }
+@media (max-width: 600px) {
+  .tabs {
+    gap: 0.3rem;
+    flex-wrap: wrap;         /* טאבים יעברו שורה אם צריך */
+  }
+  .tab-btn {
+    font-size: 0.85em;
+    padding: 0.28em 0.5em;
+    min-width: 70px;
+    max-width: 100%;
+    margin-bottom: 0.4em;
+  }
+}
   </style>
 </head>
 <body>
