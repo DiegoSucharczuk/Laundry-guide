@@ -211,6 +211,49 @@ select {
   flex-shrink: 0;
   line-height: 1.1;
 }
+
+/* הוסף ל-<style> */
+.faq-accordion {
+  margin-bottom: 1.2em;
+}
+.faq-question {
+  background: linear-gradient(90deg,#e0e6f7 0%,#dae9f7 100%);
+  border-radius: 10px;
+  padding: 0.8em 1em;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2a3d4c;
+  margin-bottom: 0.3em;
+  font-size: 1.08em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+.faq-question:hover {
+  background: #d1e2f7;
+}
+.faq-answer {
+  display: none;
+  background: #f9fafd;
+  border-radius: 0 0 10px 10px;
+  padding: 1em 1.2em 1em 1.2em;
+  margin-bottom: 0.7em;
+  border-top: 1px solid #e3eaf2;
+  font-size: 1em;
+  animation: fadeIn 0.4s;
+}
+.faq-question.open + .faq-answer {
+  display: block;
+}
+.faq-arrow {
+  font-size: 1.2em;
+  margin-right: 0.5em;
+  transition: transform 0.2s;
+}
+.faq-question.open .faq-arrow {
+  transform: rotate(90deg);
+}
   </style>
 </head>
 <body>
@@ -224,6 +267,7 @@ select {
       <button class="tab-btn active" data-tab="instructions">הוראות כביסה <span class="tab-emoji">📝</span></button>
       <button class="tab-btn" data-tab="tips">טיפים מקצועיים <span class="tab-emoji">💡</span></button>
       <button class="tab-btn" data-tab="products">חומרי ניקוי <span class="tab-emoji">🧴</span></button>
+      <button class="tab-btn" data-tab="howto">איך עושים <span class="tab-emoji">❓</span></button>
     </div>
 
     <div id="instructions" class="tab-content active">
@@ -259,11 +303,6 @@ select {
         <li>💧 כביסה מלאה חוסכת מים וחשמל, אך אל תעמיסו יותר מדי.</li>
         <li>⏱️ הוציאו בגדים מהמכונה מיד בסיום כדי למנוע ריחות לא נעימים.</li>
         <li>🌸 לכביסה ריחנית במיוחד - הוסיפו כמה טיפות שמן אתרי למרכך.</li>
-        <li>🧽 להסרת כתמים קשים במיוחד, ערבבו כף סודה לשתיה עם מעט סבון כלים עדין, מרחו על הכתם, המתינו 10 דקות, שפשפו בעדינות והכניסו למכונה.</li>
-        <li>🧂 להסרת ריחות לא נעימים: הוסיפו כף סודה לשתיה לאבקת הכביסה.</li>
-        <li>🧦 תמיד בדוק שהגרביים הם בצד הנכון ולא הפוכים.</li>
-        <li>👖 לבדוק שהכיסים ריקים.</li>
-        <li>🧑‍🦱 עדיף שהבעל יעשה כביסה 😉</li>
       </ul>
       <div class="user-tip-box">
         <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח? שלחו לנו!</h3>
@@ -308,6 +347,48 @@ select {
         </div>
       </div>
     </div>
+
+    <div id="howto" class="tab-content">
+      <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">שאלות ותשובות נפוצות</h2>
+      <div class="faq-accordion">
+        <div class="faq-question">
+          <span>🧩 איך מקפלים סדין עם גומי בפינות?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-answer">
+          <strong>שלבים לקיפול סדין עם גומי:</strong>
+          <ol style="margin-top:0.5em; margin-bottom:1em; padding-right:1.2em;">
+            <li>הנח את הסדין עם הגומי כלפי מעלה – על מיטה או שולחן.</li>
+            <li>קפל את הפינות אחת לתוך השנייה:<br>
+              הכנס ידיים לתוך שתי פינות אחדות, ושפשף אותן פנימה הצידה עד שהן משתלבות.</li>
+            <li>חזור באותו אופן עם הפינות האחרות – ייווצר מלבני.</li>
+            <li>יישר והחלוט את הפינות – הרם/תה יוצר מלבן חלק ככל האפשר.</li>
+            <li>קפל לקיפול ראשון (אורכו) – קפל צד אחד אל המרכז ואז צד שני מעליו.</li>
+            <li>קפל שוב (רוחבו) – קפל למלבן מרוכז ומסודר.</li>
+            <li>אחסן בארון</li>
+          </ol>
+          <a href="fitted-sheet-folding.jpg" target="_blank">
+            <img src="fitted-sheet-folding.jpg" alt="קיפול סדין עם גומי" style="max-width:340px; width:100%; border-radius:12px; box-shadow:0 2px 8px #e3eaf2; cursor: zoom-in;">
+          </a>
+        </div>
+        <div class="faq-question">
+          <span>🧽 איך מסירים כתמים קשים במיוחד?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-answer">
+          ערבבו כף סודה לשתיה עם מעט סבון כלים עדין, מרחו על הכתם, המתינו 10 דקות, שפשפו בעדינות והכניסו למכונה.
+        </div>
+        <div class="faq-question">
+          <span>🧂 איך מסירים ריחות לא נעימים מהכביסה?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-answer">
+          הוסיפו כף סודה לשתיה לאבקת הכביסה – זה מנטרל ריחות לא נעימים.
+        </div>
+        <!-- אפשר להוסיף כאן עוד שאלות ותשובות באותו מבנה -->
+      </div>
+    </div>
+
     <div style="text-align:center; color:#b5c6d6; font-size:0.98em; margin-top:2.2em;">
       פותח ע"י דיאגו סוצ'רסוק
     </div>
@@ -484,6 +565,17 @@ select {
       document.getElementById('userTipMsg').innerText = 'אירעה שגיאה בשליחת הטיפ.';
     });
 }
+
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', function() {
+    // סגור אחרים
+    document.querySelectorAll('.faq-question').forEach(other => {
+      if (other !== q) other.classList.remove('open');
+    });
+    // פתח/סגור את הנוכחי
+    q.classList.toggle('open');
+  });
+});
   </script>
 </body>
 </html>
