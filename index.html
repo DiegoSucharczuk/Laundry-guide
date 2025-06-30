@@ -50,29 +50,40 @@ p {
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1.2rem;
   margin-bottom: 1.5rem;
 }
 .tab-btn {
-  background: #f4faff;
-  border: 1.5px solid #b5c6d6;
-  border-radius: 10px 10px 0 0;
-  padding: 0.7em 1.3em;
-  font-size: 1.08em;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.35em;
+  background: #bfc8e6;
+  border: none;
+  border-radius: 2em;
+  padding: 0.35em 1em;    /* פחות ריווח */
+  font-size: 0.97em;      /* טקסט קטן יותר */
   font-weight: bold;
-  color: #2a3d4c;
+  color: #fff;
   cursor: pointer;
   outline: none;
-  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 8px #b5c6d6;
+  transition: background 0.25s, color 0.25s, transform 0.18s;
+  letter-spacing: 0.5px;
+}
+.tab-btn .tab-emoji {
+  font-size: 1em;
+  margin-left: 0.3em;
 }
 .tab-btn.active {
-  background: linear-gradient(90deg, #4a90e2 0%, #50e3c2 100%);
+  background: linear-gradient(90deg, #ff6b6b 0%, #ff8e8e 100%);
   color: #fff;
-  border-bottom: 2.5px solid #fff;
+  transform: scale(1.06);
 }
-.tab-btn:hover:not(.active) {
-  background: #e0e6f7;
-  color: #4a90e2;
+.tab-btn:not(.active):hover {
+  background: #a3b1e1;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
 }
 .tab-content {
   display: none;
@@ -173,32 +184,61 @@ select {
   border-radius: 12px;
   padding: 0.5em 0;
 }
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.product-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  background: linear-gradient(120deg, #f4faff 60%, #e9f7fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 8px #e3eaf2;
+  padding: 1.2rem 1.3rem;
+  min-width: 230px;
+  max-width: 270px;
+  font-size: 1.08em;
+  direction: rtl;
+}
+.product-icon {
+  font-size: 2em;
+  margin-left: 0.3em;
+  margin-right: 0;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
   </style>
 </head>
 <body>
   <div class="container">
+    <div style="text-align:center; margin-bottom: 0.7em;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="סלסלת כביסה" style="width:64px; height:64px; display:inline-block;" />
+    </div>
     <h1>המדריך החכם לכביסה בבית</h1>
-    <p>בחרו טאב למידע נוסף</p>
-
+    <!-- <p>בחרו טאב למידע נוסף</p> -->
     <div class="tabs">
-      <button class="tab-btn active" data-tab="instructions">הוראות כביסה</button>
-      <button class="tab-btn" data-tab="tips">טיפים</button>
-      <button class="tab-btn" data-tab="products">חומרי ניקוי</button>
+      <button class="tab-btn active" data-tab="instructions">הוראות כביסה <span class="tab-emoji">📝</span></button>
+      <button class="tab-btn" data-tab="tips">טיפים מקצועיים <span class="tab-emoji">💡</span></button>
+      <button class="tab-btn" data-tab="products">חומרי ניקוי <span class="tab-emoji">🧴</span></button>
     </div>
 
     <div id="instructions" class="tab-content active">
       <label for="washType">בחרו סוג כביסה:</label>
       <select id="washType">
-        <option value="">בחרו...</option>
-        <option value="white">בגדים לבנים</option>
-        <option value="color">בגדים צבעוניים רגילים</option>
-        <option value="black">בגדים שחורים</option>
-        <option value="towels">מגבות</option>
-        <option value="bedding">מצעים</option>
-        <option value="kids">בגדי ילדים / תינוקות</option>
-        <option value="sport">בגדי ספורט / ניילון</option>
-        <option value="work">בגדי עבודה מלוכלכים</option>
-        <option value="delicate">בגדים עדינים</option>
+        <option value="">-- בחרו סוג כביסה --</option>
+        <option value="white">🤍 בגדים לבנים</option>
+        <option value="color">🌈 בגדים צבעוניים רגילים</option>
+        <option value="black">🖤 בגדים שחורים</option>
+        <option value="towels">🛁 מגבות</option>
+        <option value="bedding">🛏️ מצעים</option>
+        <option value="kids">👶 בגדי ילדים / תינוקות</option>
+        <option value="sport">🏃‍♂️ בגדי ספורט / ניילון</option>
+        <option value="work">👷‍♂️ בגדי עבודה מלוכלכים</option>
+        <option value="delicate">🌸 בגדים עדינים</option>
       </select>
       <div id="result"></div>
     </div>
@@ -237,7 +277,36 @@ select {
     </div>
 
     <div id="products" class="tab-content">
-      <p style="text-align:center; color:#888;">בקרוב: המלצות על חומרי ניקוי, מרככים ותוספים!</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-icon">🧴</div>
+          <div>
+            <strong>אבקת כביסה:</strong><br>
+            השתמשו באבקה איכותית המותאמת לסוג הכביסה. לבגדים לבנים - אבקה עם אוקסיגן פעיל.
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">💧</div>
+          <div>
+            <strong>מרכך כביסה:</strong><br>
+            מרכך איכותי שומר על רכות הבד ומוסיף ריח נעים. אל תשתמשו יותר מדי!
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🌿</div>
+          <div>
+            <strong>חומרים טבעיים:</strong><br>
+            חומץ לבן, סודה לשתיה ושמנים אתריים - פתרונות טבעיים ויעילים.
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🎯</div>
+          <div>
+            <strong>מסיר כתמים:</strong><br>
+            החזיקו מסיר כתמים איכותי לטיפול מיידי בכתמים קשים.
+          </div>
+        </div>
+      </div>
     </div>
     <div style="text-align:center; color:#b5c6d6; font-size:0.98em; margin-top:2.2em;">
       פותח ע"י דיאגו סוצ'רסוק
