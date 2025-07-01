@@ -46,6 +46,11 @@ body {
     transition: top 0.2s, right 0.2s, font-size 0.2s;
   }
 }
+@media (min-width: 901px) {
+  #sidebar-toggle {
+    display: none !important;
+  }
+}
 .container {
   background: #fff;
   border-radius: 22px;
@@ -491,11 +496,6 @@ select {
   <button id="sidebar-toggle" aria-label="תפריט ניווט">
     &#9776;
   </button>
-@media (min-width: 901px) {
-  #sidebar-toggle {
-    display: none !important;
-  }
-}
   <div id="sidebar-overlay" style="display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(30,40,60,0.18);z-index:10000;"></div>
   <nav class="sidebar-nav">
     <button id="sidebar-close" aria-label="סגור תפריט" style="display:none;position:absolute;top:10px;left:10px;background:none;border:none;font-size:2em;color:#4a90e2;z-index:10002;cursor:pointer;">&times;</button>
