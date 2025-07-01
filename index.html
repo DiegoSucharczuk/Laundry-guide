@@ -14,11 +14,23 @@ body {
   background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
   margin: 0;
   padding: 0.5rem;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
   min-height: 100vh;
   box-sizing: border-box;
+}
+@media (min-width: 901px) {
+  body {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 900px) {
+  body {
+    display: block;
+  }
+  #sidebar-toggle {
+    display: block;
+  }
 }
 .container {
   background: #fff;
