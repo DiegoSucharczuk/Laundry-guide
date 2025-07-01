@@ -500,53 +500,55 @@ select {
   <nav class="sidebar-nav">
     <button id="sidebar-close" aria-label="סגור תפריט" style="display:none;position:absolute;top:10px;left:10px;background:none;border:none;font-size:2em;color:#4a90e2;z-index:10002;cursor:pointer;">&times;</button>
     <div class="sidebar-title">ניווט</div>
-    <ul>
-      <li class="sidebar-link active" data-tab="instructions">
-        <span class="sidebar-icon">📝</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">הוראות כביסה</div>
-          <div class="sidebar-desc">מדריך לפי סוג כביסה</div>
-        </div>
-      </li>
-      <li class="sidebar-link" data-tab="tips">
-        <span class="sidebar-icon">💡</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">טיפים מקצועיים</div>
-          <div class="sidebar-desc">עצות וסודות לכביסה</div>
-        </div>
-      </li>
-      <li class="sidebar-link" data-tab="products">
-        <span class="sidebar-icon">🧴</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">מדריך חומרים</div>
-          <div class="sidebar-desc">חומרי ניקוי מומלצים</div>
-        </div>
-      </li>
-      <li class="sidebar-link" data-tab="howto">
-        <span class="sidebar-icon">❓</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">שאלות ותשובות</div>
-          <div class="sidebar-desc">פתרונות לבעיות נפוצות</div>
-        </div>
-      </li>
-      <li class="sidebar-link" data-tab="tags">
-        <span class="sidebar-icon">🏷️</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">תגיות סימון</div>
-          <div class="sidebar-desc">פירוש סמלי טיפול</div>
-        </div>
-      </li>
-      <li class="sidebar-link" data-tab="addons">
-        <span class="sidebar-icon">✨</span>
-        <div class="sidebar-text">
-          <div class="sidebar-main">תוספות</div>
-          <div class="sidebar-desc">פיצ'רים מיוחדים</div>
-        </div>
-      </li>
-    </ul>
+    <div class="sidebar-scroll" style="flex:1;overflow-y:auto;min-height:0;">
+      <ul>
+        <li class="sidebar-link active" data-tab="instructions">
+          <span class="sidebar-icon">📝</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">הוראות כביסה</div>
+            <div class="sidebar-desc">מדריך לפי סוג כביסה</div>
+          </div>
+        </li>
+        <li class="sidebar-link" data-tab="tips">
+          <span class="sidebar-icon">💡</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">טיפים מקצועיים</div>
+            <div class="sidebar-desc">עצות וסודות לכביסה</div>
+          </div>
+        </li>
+        <li class="sidebar-link" data-tab="products">
+          <span class="sidebar-icon">🧴</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">מדריך חומרים</div>
+            <div class="sidebar-desc">חומרי ניקוי מומלצים</div>
+          </div>
+        </li>
+        <li class="sidebar-link" data-tab="howto">
+          <span class="sidebar-icon">❓</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">שאלות ותשובות</div>
+            <div class="sidebar-desc">פתרונות לבעיות נפוצות</div>
+          </div>
+        </li>
+        <li class="sidebar-link" data-tab="tags">
+          <span class="sidebar-icon">🏷️</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">תגיות סימון</div>
+            <div class="sidebar-desc">פירוש סמלי טיפול</div>
+          </div>
+        </li>
+        <li class="sidebar-link" data-tab="addons">
+          <span class="sidebar-icon">✨</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">תוספות</div>
+            <div class="sidebar-desc">פיצ'רים מיוחדים</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </nav>
-  <div class="main-wrapper">
-    <div class="container">
+  <div class="main-wrapper" style="overflow-y:auto;min-height:0;flex:1;height:100vh;align-items:stretch;justify-content:flex-start;padding-top:0;">
+    <div class="container" style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;margin:0;">
       <div style="text-align:center; margin-bottom: 0.7em;">
         <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="סלסלת כביסה" style="width:64px; height:64px; display:inline-block;" />
       </div>
@@ -571,7 +573,7 @@ select {
         <div id="result"></div>
       </div>
       <div id="welcome-image" class="tab-content active" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
-        <img id="welcome-img" src="towels.jpg" alt="מגבות" style="max-width: 100%; height: auto; border-radius: 18px; box-shadow: 0 2px 12px #e3eaf2; margin-bottom: 1.2em; background: #fff; display: block;" onerror="this.style.display='none';document.getElementById('welcome-image').insertAdjacentHTML('beforeend','<div style=\'color:#e74c3c;font-size:1.2em;margin-top:2em;\'>לא נמצאה תמונת towels.jpg בתיקייה</div>')" />
+        <img id="welcome-img" src="towels.jpg" alt="מגבות" style="max-width: 100vw; max-height: 70vh; width: auto; height: auto; object-fit: contain; border-radius: 18px; box-shadow: 0 2px 12px #e3eaf2; margin-bottom: 1.2em; background: #fff; display: block;" onerror="this.style.display='none';document.getElementById('welcome-image').insertAdjacentHTML('beforeend','<div style=\'color:#e74c3c;font-size:1.2em;margin-top:2em;\'>לא נמצאה תמונת towels.jpg בתיקייה</div>')" />
       </div>
 
       <div id="tips" class="tab-content">
