@@ -30,6 +30,8 @@ body {
   }
   #sidebar-toggle {
     display: block;
+    left: 12px;
+    right: auto;
   }
 }
 .container {
@@ -351,6 +353,8 @@ select {
 @media (max-width: 900px) {
   #sidebar-toggle {
     display: block;
+    left: 12px;
+    right: auto;
   }
   .sidebar-nav {
     width: 80vw;
@@ -413,7 +417,7 @@ select {
     margin-top: 0.1em;
   }
   .main-wrapper {
-    margin-right: 0;
+    padding-right: 0;
     width: 100vw;
     align-items: stretch;
   }
@@ -440,7 +444,8 @@ select {
 
 /* מרכז את התוכן בין הסיידבר לשמאל */
 .main-wrapper {
-  margin-right: 220px; /* רוחב הסיידבר */
+  /* margin-right: 220px;  הסר - לא צריך */
+  padding-right: 220px; /* שמור מקום לסיידבר, מאפשר מרכז אמיתי */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -448,12 +453,13 @@ select {
 }
 @media (min-width: 901px) {
   .main-wrapper {
-    margin-right: 220px;
+    padding-right: 220px;
+    /* margin-right: 220px;  הסר */
   }
 }
 @media (max-width: 900px) {
   .main-wrapper {
-    margin-right: 0;
+    padding-right: 0;
     width: 100vw;
     align-items: stretch;
   }
