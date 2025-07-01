@@ -65,7 +65,7 @@ body {
   margin: 2.5rem 0 0 0;
   direction: rtl;
   animation: fadeIn 1.1s;
-  min-height: 100vh;
+  min-height: 100vh;   /* זה מה שצריך */
   box-sizing: border-box;
 }
 @keyframes fadeIn {
@@ -164,12 +164,17 @@ select {
   margin-bottom: 0.7rem;
 }
 .user-tip-box {
-  background: linear-gradient(120deg, #f9f9f9 60%, #e9f7fa 100%);
+  background: #fff;
   border-radius: 12px;
   padding: 1.2rem;
   margin-top: 1rem;
   border: 1px solid #e1e1e1;
   box-shadow: 0 2px 8px #e3eaf2;
+  min-height: 70vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .user-tip-box h3 {
   margin-bottom: 0.8em;
@@ -465,12 +470,12 @@ select {
 
 /* מרכז את התוכן בין הסיידבר לשמאל */
 .main-wrapper {
-  /* margin-right: 220px;  הסר - לא צריך */
-  padding-right: 220px; /* שמור מקום לסיידבר, מאפשר מרכז אמיתי */
+  padding-right: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  /* height: 100vh;  <-- להסיר! */
 }
 @media (min-width: 901px) {
   .main-wrapper {
@@ -548,10 +553,17 @@ select {
             <div class="sidebar-desc">פיצ'רים מיוחדים</div>
           </div>
         </li>
+        <li class="sidebar-link" data-tab="add-tip">
+          <span class="sidebar-icon">➕</span>
+          <div class="sidebar-text">
+            <div class="sidebar-main">הוספת טיפ</div>
+            <div class="sidebar-desc">שלחו טיפ או תגובה</div>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
-  <div class="main-wrapper" style="overflow-y:auto;min-height:0;flex:1;height:100vh;align-items:stretch;justify-content:flex-start;padding-top:0;">
+  <div class="main-wrapper" style="overflow-y:auto;min-height:0;flex:1;align-items:stretch;justify-content:flex-start;padding-top:0;">
     <div class="container" style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;margin:0;">
       <div style="text-align:center; margin-bottom: 1.5em; margin-top: 1.2em;">
         <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="סלסלת כביסה" style="width:48px; height:48px; display:inline-block;" />
@@ -581,27 +593,31 @@ select {
       </div>
 
       <div id="tips" class="tab-content">
-        <ul>
-          <li>🧺 הפרידו בין סוגי כביסה - לא לשלב בגדים כהים, בהירים ועדינים יחד.</li>
-          <li>🧼 אל תעמיסו את המכונה - כך הבגדים יישטפו טוב יותר.</li>
-          <li>🏷️ בדקו תמיד את תווית הבגדים לפני הכביסה!</li>
-          <li>🧴 השתמשו בחומרי ניקוי איכותיים.</li>
-          <li>🔄 סל"ד - סיבובי דקה, מציין את מהירות הסחיטה של המכונה.</li>
-          <li>🌬️ השתדלו לייבש בגדים עדינים באוויר ולא במייבש.</li>
-          <li>❄️ כביסה במים קרים שומרת על צבע הבגדים ומונעת התכווצות.</li>
-          <li>🍋 הוסיפו חצי כוס חומץ לבן לשטיפה - זה מרכך ומנטרל ריחות לא נעימים.</li>
-          <li>🔄 הפכו בגדים כהים לפני הכביסה כדי לשמור על הצבע.</li>
-          <li>🧺 ייבוש בגדים עדינים באוויר יאריך את חייהם.</li>
-          <li>🧴 השתמשו בכמות מדויקת של חומר ניקוי - עודף חומר לא משפר את הניקיון!</li>
-          <li>💧 כביסה מלאה חוסכת מים וחשמל, אך אל תעמיסו יותר מדי.</li>
-          <li>⏱️ הוציאו בגדים מהמכונה מיד בסיום כדי למנוע ריחות לא נעימים.</li>
-          <li>🌸 לכביסה ריחנית במיוחד - הוסיפו כמה טיפות שמן אתרי למרכך.</li>
-          <li>🚪 לא לסגור את דלת המכונה לאחר כביסה, אלא לתת לה להתאוורר כדי שהמכונה לא תסריח מבפנים.</li>
-        </ul>
         <div class="user-tip-box">
-          <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח? שלחו לנו!</h3>
+          <ul>
+            <li>🧺 הפרידו בין סוגי כביסה - לא לשלב בגדים כהים, בהירים ועדינים יחד.</li>
+            <li>🧼 אל תעמיסו את המכונה - כך הבגדים יישטפו טוב יותר.</li>
+            <li>🏷️ בדקו תמיד את תווית הבגדים לפני הכביסה!</li>
+            <li>🧴 השתמשו בחומרי ניקוי איכותיים.</li>
+            <li>🔄 סל"ד - סיבובי דקה, מציין את מהירות הסחיטה של המכונה.</li>
+            <li>🌬️ השתדלו לייבש בגדים עדינים באוויר ולא במייבש.</li>
+            <li>❄️ כביסה במים קרים שומרת על צבע הבגדים ומונעת התכווצות.</li>
+            <li>🍋 הוסיפו חצי כוס חומץ לבן לשטיפה - זה מרכך ומנטרל ריחות לא נעימים.</li>
+            <li>🔄 הפכו בגדים כהים לפני הכביסה כדי לשמור על הצבע.</li>
+            <li>🧺 ייבוש בגדים עדינים באוויר יאריך את חייהם.</li>
+            <li>🧴 השתמשו בכמות מדויקת של חומר ניקוי - עודף חומר לא משפר את הניקיון!</li>
+            <li>💧 כביסה מלאה חוסכת מים וחשמל, אך אל תעמיסו יותר מדי.</li>
+            <li>⏱️ הוציאו בגדים מהמכונה מיד בסיום כדי למנוע ריחות לא נעימים.</li>
+            <li>🌸 לכביסה ריחנית במיוחד - הוסיפו כמה טיפות שמן אתרי למרכך.</li>
+            <li>🚪 לא לסגור את דלת המכונה לאחר כביסה, אלא לתת לה להתאוורר כדי שהמכונה לא תסריח מבפנים.</li>
+          </ul>
+        </div>
+      </div>
+      <div id="add-tip" class="tab-content">
+        <div class="user-tip-box">
+          <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח או תגובה? שלחו לנו!</h3>
           <form id="userTipForm" onsubmit="sendUserTip(event)" style="margin-bottom:0.5em;">
-            <textarea id="userTipInput" placeholder="כתבו כאן את הטיפ שלכם..." required style="width:100%; min-height:60px; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;"></textarea>
+            <textarea id="userTipInput" placeholder="כתבו כאן את הטיפ או התגובה שלכם..." required style="width:100%; min-height:60px; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;"></textarea>
             <input type="text" id="userTipName" placeholder="שם (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
             <input type="email" id="userTipEmail" placeholder="אימייל (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
             <button type="submit" style="margin-top:0.7em; background:linear-gradient(90deg,#4a90e2 0%,#50e3c2 100%); color:#fff; border:none; border-radius:8px; padding:0.7em 1.3em; font-size:1.08em; font-weight:bold; cursor:pointer; box-shadow:0 2px 8px #e3eaf2;">שלח טיפ</button>
@@ -644,7 +660,9 @@ select {
       </div>
 
       <div id="howto" class="tab-content">
-        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">שאלות ותשובות נפוצות</h2>
+        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em; text-align:center;">
+          שאלות ותשובות נפוצות
+        </h2>
         <div class="faq-accordion">
           <div class="faq-question">
             <span>🧩 איך מקפלים סדין עם גומי בפינות?</span>
@@ -692,7 +710,9 @@ select {
       </div>
 
       <div id="tags" class="tab-content">
-        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">פירוש תגיות סימון וטבלת סמלי כביסה</h2>
+        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em; text-align:center;">
+          פירוש תגיות סימון וטבלת סמלי כביסה
+        </h2>
         <div style="display: flex; flex-direction: column; align-items: center;">
           <a href="Laundary.jpg" target="_blank" id="laundry-zoom-link">
             <img id="laundry-img" src="Laundary.jpg" alt="טבלת סימני כביסה רשמיים" style="max-width:100%; height:auto; border-radius:16px; box-shadow:0 2px 12px #e3eaf2; margin-bottom:1.2em; background:#fff; cursor: zoom-in; transition: all 0.3s cubic-bezier(.4,2,.6,1);" loading="lazy" />
@@ -924,6 +944,12 @@ select {
   formData.append('tip', tip);
   formData.append('email', email);
   formData.append('name', name);
+
+  // נעל את הכפתור בזמן השליחה
+  const submitBtn = document.querySelector('#userTipForm button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'שולח...';
+
   fetch('https://script.google.com/macros/s/AKfycbxEZfzPqtFv9mzSAF94zVxsNwkfdQ2F_y1dhw3ZJMUxnBcRpsHSWYKKYoM2eEheUqxbTQ/exec', {
     method: 'POST',
     body: formData
@@ -936,6 +962,11 @@ select {
     .catch(() => {
       document.getElementById('userTipMsg').style.display = 'block';
       document.getElementById('userTipMsg').innerText = 'אירעה שגיאה בשליחת הטיפ.';
+    })
+    .finally(() => {
+      // פתח את הכפתור מחדש אחרי קבלת תשובה
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'שלח טיפ';
     });
 }
 
