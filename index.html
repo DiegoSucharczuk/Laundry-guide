@@ -554,7 +554,7 @@ select {
       <div id="tab-title" style="text-align:center; color:#4a90e2; font-size:1.25em; font-weight:bold; margin-bottom:1.2em;"></div>
       <!-- <p>בחרו טאב למידע נוסף</p> -->
       <!-- טאבים הוסרו, ניווט מתבצע מה-sidebar בלבד -->
-      <div id="instructions" class="tab-content active">
+      <div id="instructions" class="tab-content">
         <label for="washType">בחרו סוג כביסה:</label>
         <select id="washType">
           <option value="">-- בחרו סוג כביסה --</option>
@@ -569,6 +569,9 @@ select {
           <option value="delicate">🌸 בגדים עדינים</option>
         </select>
         <div id="result"></div>
+      </div>
+      <div id="welcome-image" class="tab-content active" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
+        <img id="welcome-img" src="towels.jpg" alt="מגבות" style="max-width: 100%; height: auto; border-radius: 18px; box-shadow: 0 2px 12px #e3eaf2; margin-bottom: 1.2em; background: #fff; display: block;" onerror="this.style.display='none';document.getElementById('welcome-image').insertAdjacentHTML('beforeend','<div style=\'color:#e74c3c;font-size:1.2em;margin-top:2em;\'>לא נמצאה תמונת towels.jpg בתיקייה</div>')" />
       </div>
 
       <div id="tips" class="tab-content">
@@ -761,7 +764,13 @@ select {
     // טאבס
     function showTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
+      if(tabId === 'instructions') {
+        document.getElementById('instructions').classList.add('active');
+        document.getElementById('welcome-image').style.display = 'none';
+      } else {
+        document.getElementById(tabId).classList.add('active');
+        document.getElementById('welcome-image').style.display = 'none';
+      }
     }
 
     // מידע לסוגי כביסה
@@ -969,15 +978,21 @@ document.querySelectorAll('.faq-question').forEach(q => {
       if (window.innerWidth <= 900) closeSidebar();
     });
   });
-  // Set initial tab title on load
+  // Set initial tab title and welcome image on load
   document.addEventListener('DOMContentLoaded', function() {
-    var active = document.querySelector('.sidebar-link.active');
-    if (active) {
-      var main = active.querySelector('.sidebar-main');
-      if (main) {
-        document.getElementById('tab-title').textContent = main.textContent;
-      }
-    }
+    // Show welcome image, hide all other tabs
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    var welcome = document.getElementById('welcome-image');
+    if (welcome) welcome.style.display = 'flex';
+    // Set tab title to empty
+    document.getElementById('tab-title').textContent = '';
+  });
+  // When clicking a sidebar link, hide welcome image
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', function() {
+      var welcome = document.getElementById('welcome-image');
+      if (welcome) welcome.style.display = 'none';
+    });
   });
   </script>
 </body>
