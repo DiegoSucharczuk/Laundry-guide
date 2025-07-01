@@ -15,19 +15,23 @@ body {
   margin: 0;
   padding: 0.5rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 .container {
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 8px 40px rgba(74,144,226,0.13), 0 1.5px 8px #b5c6d6;
   padding: 2.2rem 1.7rem 1.5rem 1.7rem;
-  max-width: 480px;
-  width: 100%;
+  max-width: 1100px;
+  width: 98vw;
+  margin: 2.5rem 0 0 0;
   direction: rtl;
   animation: fadeIn 1.1s;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px);}
@@ -267,168 +271,459 @@ select {
     margin-bottom: 0.4em;
   }
 }
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 220px;
+  background: #f7fafd;
+  border-left: 1.5px solid #e3eaf2;
+  box-shadow: -2px 0 16px #e3eaf2;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+.sidebar-title {
+  font-size: 1.13em;
+  color: #4a90e2;
+  font-weight: bold;
+  text-align: right;
+  margin: 0 1.2em 1.2em 0;
+  letter-spacing: 1px;
+}
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  padding: 0.7em 1.2em 0.7em 0.5em;
+  border-radius: 12px 0 0 12px;
+  cursor: pointer;
+  margin-bottom: 0.2em;
+  transition: background 0.18s, color 0.18s;
+  position: relative;
+}
+.sidebar-link.active, .sidebar-link:hover {
+  background: linear-gradient(90deg, #e0e6f7 0%, #dae9f7 100%);
+  color: #4a90e2;
+}
+.sidebar-icon {
+  font-size: 1.45em;
+  margin-top: 0.1em;
+  flex-shrink: 0;
+}
+.sidebar-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.sidebar-main {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+.sidebar-desc {
+  font-size: 0.93em;
+  color: #7a8ca3;
+  margin-top: 0.1em;
+}
+@media (max-width: 900px) {
+  .sidebar-nav {
+    width: 100vw;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 2px 8px #e3eaf2;
+    border-left: none;
+    border-bottom: 1.5px solid #e3eaf2;
+    padding: 0.3em 0 0.3em 0;
+    margin-bottom: 1.2em;
+  }
+  .sidebar-title {
+    display: none;
+  }
+  .sidebar-nav ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .sidebar-link {
+    border-radius: 12px;
+    margin-bottom: 0;
+    padding: 0.5em 0.7em;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+    font-size: 0.98em;
+  }
+  .sidebar-text {
+    align-items: center;
+  }
+  .sidebar-main {
+    font-size: 0.98em;
+  }
+  .sidebar-desc {
+    font-size: 0.85em;
+    margin-top: 0.1em;
+  }
+}
+@media (max-width: 600px) {
+  .sidebar-nav {
+    font-size: 0.97em;
+    padding: 0.1em 0 0.1em 0;
+  }
+  .sidebar-link {
+    font-size: 0.93em;
+    min-width: 54px;
+    padding: 0.3em 0.3em;
+  }
+}
+/* .container { margin-right: 240px; }  Removed for flex centering */
+@media (min-width: 901px) {
+  body {
+    padding-right: 240px; /* Reserve space for sidebar */
+  }
+}
+}
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    padding-right: 0;
+  }
+  .main-wrapper {
+    margin-right: 0;
+    width: 100vw;
+    align-items: stretch;
+  }
+  .container {
+    max-width: 100vw;
+    width: 100vw;
+    margin: 1.2rem 0 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    max-width: 100vw;
+    width: 100vw;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.2rem 0.1rem 0.7rem 0.1rem;
+  }
+}
+
+/* מרכז את התוכן בין הסיידבר לשמאל */
+.main-wrapper {
+  margin-right: 220px; /* רוחב הסיידבר */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+@media (min-width: 901px) {
+  .main-wrapper {
+    margin-right: 220px;
+  }
+}
+@media (max-width: 900px) {
+  .main-wrapper {
+    margin-right: 0;
+    width: 100vw;
+    align-items: stretch;
+  }
+  .container {
+    max-width: 100vw;
+    width: 100vw;
+    margin: 1.2rem 0 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div style="text-align:center; margin-bottom: 0.7em;">
-      <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="סלסלת כביסה" style="width:64px; height:64px; display:inline-block;" />
-    </div>
-    <h1>המדריך החכם לכביסה בבית</h1>
-    <!-- <p>בחרו טאב למידע נוסף</p> -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="instructions">הוראות כביסה <span class="tab-emoji">📝</span></button>
-      <button class="tab-btn" data-tab="tips">טיפים מקצועיים <span class="tab-emoji">💡</span></button>
-      <button class="tab-btn" data-tab="products">חומרי ניקוי <span class="tab-emoji">🧴</span></button>
-      <button class="tab-btn" data-tab="howto">איך עושים <span class="tab-emoji">❓</span></button>
-    </div>
-
-    <div id="instructions" class="tab-content active">
-      <label for="washType">בחרו סוג כביסה:</label>
-      <select id="washType">
-        <option value="">-- בחרו סוג כביסה --</option>
-        <option value="white">🤍 בגדים לבנים</option>
-        <option value="color">🌈 בגדים צבעוניים רגילים</option>
-        <option value="black">🖤 בגדים שחורים</option>
-        <option value="towels">🛁 מגבות</option>
-        <option value="bedding">🛏️ מצעים</option>
-        <option value="kids">👶 בגדי ילדים / תינוקות</option>
-        <option value="sport">🏃‍♂️ בגדי ספורט / ניילון</option>
-        <option value="work">👷‍♂️ בגדי עבודה מלוכלכים</option>
-        <option value="delicate">🌸 בגדים עדינים</option>
-      </select>
-      <div id="result"></div>
-    </div>
-
-    <div id="tips" class="tab-content">
-      <ul>
-        <li>🧺 הפרידו בין סוגי כביסה - לא לשלב בגדים כהים, בהירים ועדינים יחד.</li>
-        <li>🧼 אל תעמיסו את המכונה - כך הבגדים יישטפו טוב יותר.</li>
-        <li>🏷️ בדקו תמיד את תווית הבגדים לפני הכביסה!</li>
-        <li>🧴 השתמשו בחומרי ניקוי איכותיים.</li>
-        <li>🔄 סל"ד - סיבובי דקה, מציין את מהירות הסחיטה של המכונה.</li>
-        <li>🌬️ השתדלו לייבש בגדים עדינים באוויר ולא במייבש.</li>
-        <li>❄️ כביסה במים קרים שומרת על צבע הבגדים ומונעת התכווצות.</li>
-        <li>🍋 הוסיפו חצי כוס חומץ לבן לשטיפה - זה מרכך ומנטרל ריחות לא נעימים.</li>
-        <li>🔄 הפכו בגדים כהים לפני הכביסה כדי לשמור על הצבע.</li>
-        <li>🧺 ייבוש בגדים עדינים באוויר יאריך את חייהם.</li>
-        <li>🧴 השתמשו בכמות מדויקת של חומר ניקוי - עודף חומר לא משפר את הניקיון!</li>
-        <li>💧 כביסה מלאה חוסכת מים וחשמל, אך אל תעמיסו יותר מדי.</li>
-        <li>⏱️ הוציאו בגדים מהמכונה מיד בסיום כדי למנוע ריחות לא נעימים.</li>
-        <li>🌸 לכביסה ריחנית במיוחד - הוסיפו כמה טיפות שמן אתרי למרכך.</li>
-        <li>🚪 לא לסגור את דלת המכונה לאחר כביסה, אלא לתת לה להתאוורר כדי שהמכונה לא תסריח מבפנים.</li>
-      </ul>
-      <div class="user-tip-box">
-        <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח? שלחו לנו!</h3>
-        <form id="userTipForm" onsubmit="sendUserTip(event)" style="margin-bottom:0.5em;">
-          <textarea id="userTipInput" placeholder="כתבו כאן את הטיפ שלכם..." required style="width:100%; min-height:60px; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;"></textarea>
-          <input type="text" id="userTipName" placeholder="שם (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
-          <input type="email" id="userTipEmail" placeholder="אימייל (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
-          <button type="submit" style="margin-top:0.7em; background:linear-gradient(90deg,#4a90e2 0%,#50e3c2 100%); color:#fff; border:none; border-radius:8px; padding:0.7em 1.3em; font-size:1.08em; font-weight:bold; cursor:pointer; box-shadow:0 2px 8px #e3eaf2;">שלח טיפ</button>
-        </form>
-        <div id="userTipMsg" style="display:none; color:#4a90e2; font-weight:bold; margin-top:0.5em;"></div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-title">ניווט</div>
+    <ul>
+      <li class="sidebar-link active" data-tab="instructions">
+        <span class="sidebar-icon">📝</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">הוראות כביסה</div>
+          <div class="sidebar-desc">מדריך לפי סוג כביסה</div>
+        </div>
+      </li>
+      <li class="sidebar-link" data-tab="tips">
+        <span class="sidebar-icon">💡</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">טיפים מקצועיים</div>
+          <div class="sidebar-desc">עצות וסודות לכביסה</div>
+        </div>
+      </li>
+      <li class="sidebar-link" data-tab="products">
+        <span class="sidebar-icon">🧴</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">מדריך חומרים</div>
+          <div class="sidebar-desc">חומרי ניקוי מומלצים</div>
+        </div>
+      </li>
+      <li class="sidebar-link" data-tab="howto">
+        <span class="sidebar-icon">❓</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">שאלות ותשובות</div>
+          <div class="sidebar-desc">פתרונות לבעיות נפוצות</div>
+        </div>
+      </li>
+      <li class="sidebar-link" data-tab="tags">
+        <span class="sidebar-icon">🏷️</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">תגיות סימון</div>
+          <div class="sidebar-desc">פירוש סמלי טיפול</div>
+        </div>
+      </li>
+      <li class="sidebar-link" data-tab="addons">
+        <span class="sidebar-icon">✨</span>
+        <div class="sidebar-text">
+          <div class="sidebar-main">תוספות</div>
+          <div class="sidebar-desc">פיצ'רים מיוחדים</div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <div class="main-wrapper">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 0.7em;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="סלסלת כביסה" style="width:64px; height:64px; display:inline-block;" />
       </div>
-    </div>
+      <h1>המדריך החכם לכביסה בבית</h1>
+      <div id="tab-title" style="text-align:center; color:#4a90e2; font-size:1.25em; font-weight:bold; margin-bottom:1.2em;"></div>
+      <!-- <p>בחרו טאב למידע נוסף</p> -->
+      <!-- טאבים הוסרו, ניווט מתבצע מה-sidebar בלבד -->
+      <div id="instructions" class="tab-content active">
+        <label for="washType">בחרו סוג כביסה:</label>
+        <select id="washType">
+          <option value="">-- בחרו סוג כביסה --</option>
+          <option value="white">🤍 בגדים לבנים</option>
+          <option value="color">🌈 בגדים צבעוניים רגילים</option>
+          <option value="black">🖤 בגדים שחורים</option>
+          <option value="towels">🛁 מגבות</option>
+          <option value="bedding">🛏️ מצעים</option>
+          <option value="kids">👶 בגדי ילדים / תינוקות</option>
+          <option value="sport">🏃‍♂️ בגדי ספורט / ניילון</option>
+          <option value="work">👷‍♂️ בגדי עבודה מלוכלכים</option>
+          <option value="delicate">🌸 בגדים עדינים</option>
+        </select>
+        <div id="result"></div>
+      </div>
 
-    <div id="products" class="tab-content">
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="product-icon">🧴</div>
-          <div>
-            <strong>אבקת כביסה:</strong><br>
-            השתמשו באבקה איכותית המותאמת לסוג הכביסה. לבגדים לבנים - אבקה עם אוקסיגן פעיל.
-          </div>
+      <div id="tips" class="tab-content">
+        <ul>
+          <li>🧺 הפרידו בין סוגי כביסה - לא לשלב בגדים כהים, בהירים ועדינים יחד.</li>
+          <li>🧼 אל תעמיסו את המכונה - כך הבגדים יישטפו טוב יותר.</li>
+          <li>🏷️ בדקו תמיד את תווית הבגדים לפני הכביסה!</li>
+          <li>🧴 השתמשו בחומרי ניקוי איכותיים.</li>
+          <li>🔄 סל"ד - סיבובי דקה, מציין את מהירות הסחיטה של המכונה.</li>
+          <li>🌬️ השתדלו לייבש בגדים עדינים באוויר ולא במייבש.</li>
+          <li>❄️ כביסה במים קרים שומרת על צבע הבגדים ומונעת התכווצות.</li>
+          <li>🍋 הוסיפו חצי כוס חומץ לבן לשטיפה - זה מרכך ומנטרל ריחות לא נעימים.</li>
+          <li>🔄 הפכו בגדים כהים לפני הכביסה כדי לשמור על הצבע.</li>
+          <li>🧺 ייבוש בגדים עדינים באוויר יאריך את חייהם.</li>
+          <li>🧴 השתמשו בכמות מדויקת של חומר ניקוי - עודף חומר לא משפר את הניקיון!</li>
+          <li>💧 כביסה מלאה חוסכת מים וחשמל, אך אל תעמיסו יותר מדי.</li>
+          <li>⏱️ הוציאו בגדים מהמכונה מיד בסיום כדי למנוע ריחות לא נעימים.</li>
+          <li>🌸 לכביסה ריחנית במיוחד - הוסיפו כמה טיפות שמן אתרי למרכך.</li>
+          <li>🚪 לא לסגור את דלת המכונה לאחר כביסה, אלא לתת לה להתאוורר כדי שהמכונה לא תסריח מבפנים.</li>
+        </ul>
+        <div class="user-tip-box">
+          <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח? שלחו לנו!</h3>
+          <form id="userTipForm" onsubmit="sendUserTip(event)" style="margin-bottom:0.5em;">
+            <textarea id="userTipInput" placeholder="כתבו כאן את הטיפ שלכם..." required style="width:100%; min-height:60px; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;"></textarea>
+            <input type="text" id="userTipName" placeholder="שם (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
+            <input type="email" id="userTipEmail" placeholder="אימייל (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
+            <button type="submit" style="margin-top:0.7em; background:linear-gradient(90deg,#4a90e2 0%,#50e3c2 100%); color:#fff; border:none; border-radius:8px; padding:0.7em 1.3em; font-size:1.08em; font-weight:bold; cursor:pointer; box-shadow:0 2px 8px #e3eaf2;">שלח טיפ</button>
+          </form>
+          <div id="userTipMsg" style="display:none; color:#4a90e2; font-weight:bold; margin-top:0.5em;"></div>
         </div>
-        <div class="product-card">
-          <div class="product-icon">💧</div>
-          <div>
-            <strong>מרכך כביסה:</strong><br>
-            מרכך איכותי שומר על רכות הבד ומוסיף ריח נעים. אל תשתמשו יותר מדי!
+      </div>
+
+      <div id="products" class="tab-content">
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-icon">🧴</div>
+            <div>
+              <strong>אבקת כביסה:</strong><br>
+              השתמשו באבקה איכותית המותאמת לסוג הכביסה. לבגדים לבנים - אבקה עם אוקסיגן פעיל.
+            </div>
           </div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon">🌿</div>
-          <div>
-            <strong>חומרים טבעיים:</strong><br>
-            חומץ לבן, סודה לשתיה ושמנים אתריים - פתרונות טבעיים ויעילים.
+          <div class="product-card">
+            <div class="product-icon">💧</div>
+            <div>
+              <strong>מרכך כביסה:</strong><br>
+              מרכך איכותי שומר על רכות הבד ומוסיף ריח נעים. אל תשתמשו יותר מדי!
+            </div>
           </div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon">🎯</div>
-          <div>
-            <strong>מסיר כתמים:</strong><br>
-            החזיקו מסיר כתמים איכותי לטיפול מיידי בכתמים קשים.
+          <div class="product-card">
+            <div class="product-icon">🌿</div>
+            <div>
+              <strong>חומרים טבעיים:</strong><br>
+              חומץ לבן, סודה לשתיה ושמנים אתריים - פתרונות טבעיים ויעילים.
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🎯</div>
+            <div>
+              <strong>מסיר כתמים:</strong><br>
+              החזיקו מסיר כתמים איכותי לטיפול מיידי בכתמים קשים.
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div id="howto" class="tab-content">
-      <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">שאלות ותשובות נפוצות</h2>
-      <div class="faq-accordion">
-        <div class="faq-question">
-          <span>🧩 איך מקפלים סדין עם גומי בפינות?</span>
-          <span class="faq-arrow">▶</span>
+      <div id="howto" class="tab-content">
+        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">שאלות ותשובות נפוצות</h2>
+        <div class="faq-accordion">
+          <div class="faq-question">
+            <span>🧩 איך מקפלים סדין עם גומי בפינות?</span>
+            <span class="faq-arrow">▶</span>
+          </div>
+          <div class="faq-answer">
+            <strong>שלבים לקיפול סדין עם גומי:</strong>
+            <ol style="margin-top:0.5em; margin-bottom:1em; padding-right:1.2em;">
+              <li>הנח את הסדין עם הגומי כלפי מעלה – על מיטה או שולחן.</li>
+              <li>קפל את הפינות אחת לתוך השנייה:<br>
+                הכנס ידיים לתוך שתי פינות אחדות, ושפשף אותן פנימה הצידה עד שהן משתלבות.</li>
+              <li>חזור באותו אופן עם הפינות האחרות – ייווצר מלבני.</li>
+              <li>יישר והחלוט את הפינות – הרם/תה יוצר מלבן חלק ככל האפשר.</li>
+              <li>קפל לקיפול ראשון (אורכו) – קפל צד אחד אל המרכז ואז צד שני מעליו.</li>
+              <li>קפל שוב (רוחבו) – קפל למלבן מרוכז ומסודר.</li>
+              <li>אחסן בארון</li>
+            </ol>
+            <a href="fitted-sheet-folding.jpg" target="_blank">
+              <img src="fitted-sheet-folding.jpg" alt="קיפול סדין עם גומי" style="max-width:340px; width:100%; border-radius:12px; box-shadow:0 2px 8px #e3eaf2; cursor: zoom-in;">
+            </a>
+          </div>
+          <div class="faq-question">
+            <span>🧽 איך מסירים כתמים קשים במיוחד?</span>
+            <span class="faq-arrow">▶</span>
+          </div>
+          <div class="faq-answer">
+            ערבבו כף סודה לשתיה עם מעט סבון כלים עדין, מרחו על הכתם, המתינו 10 דקות, שפשפו בעדינות והכניסו למכונה.
+          </div>
+          <div class="faq-question">
+            <span>🧂 איך מסירים ריחות לא נעימים מהכביסה?</span>
+            <span class="faq-arrow">▶</span>
+          </div>
+          <div class="faq-answer">
+            הוסיפו כף סודה לשתיה לאבקת הכביסה – זה מנטרל ריחות לא נעימים.
+          </div>
+          <div class="faq-question">
+            <span>🧑‍🔧 מה הדרך הכי טובה לעשות כביסה?</span>
+            <span class="faq-arrow">▶</span>
+          </div>
+          <div class="faq-answer">
+            פשוט תנו לבעל לעשות את הכביסה 😉 (ואם אין בעל – אפשר גם לבד, עם המדריך שלנו!) <strong>המלצה של שירי 💡</strong>
+          </div>
+          <!-- אפשר להוסיף כאן עוד שאלות ותשובות באותו מבנה -->
         </div>
-        <div class="faq-answer">
-          <strong>שלבים לקיפול סדין עם גומי:</strong>
-          <ol style="margin-top:0.5em; margin-bottom:1em; padding-right:1.2em;">
-            <li>הנח את הסדין עם הגומי כלפי מעלה – על מיטה או שולחן.</li>
-            <li>קפל את הפינות אחת לתוך השנייה:<br>
-              הכנס ידיים לתוך שתי פינות אחדות, ושפשף אותן פנימה הצידה עד שהן משתלבות.</li>
-            <li>חזור באותו אופן עם הפינות האחרות – ייווצר מלבני.</li>
-            <li>יישר והחלוט את הפינות – הרם/תה יוצר מלבן חלק ככל האפשר.</li>
-            <li>קפל לקיפול ראשון (אורכו) – קפל צד אחד אל המרכז ואז צד שני מעליו.</li>
-            <li>קפל שוב (רוחבו) – קפל למלבן מרוכז ומסודר.</li>
-            <li>אחסן בארון</li>
-          </ol>
-          <a href="fitted-sheet-folding.jpg" target="_blank">
-            <img src="fitted-sheet-folding.jpg" alt="קיפול סדין עם גומי" style="max-width:340px; width:100%; border-radius:12px; box-shadow:0 2px 8px #e3eaf2; cursor: zoom-in;">
+      </div>
+
+      <div id="tags" class="tab-content">
+        <h2 style="margin-bottom:1.2em; color:#4a90e2; font-size:1.3em;">פירוש תגיות סימון וטבלת סמלי כביסה</h2>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <a href="laundary.jpg" target="_blank" id="laundry-zoom-link">
+            <img id="laundry-img" src="laundary.jpg" alt="טבלת סימני כביסה רשמיים" style="max-width:100%; height:auto; border-radius:16px; box-shadow:0 2px 12px #e3eaf2; margin-bottom:1.2em; background:#fff; cursor: zoom-in; transition: all 0.3s cubic-bezier(.4,2,.6,1);" loading="lazy" />
           </a>
+          <div style="color:#7a8ca3; font-size:1em; margin-bottom:0.7em; text-align:center; max-width:420px;">
+            להלן טבלת הסימנים/תגיות הרשמיים כפי שמופיעים על תוויות בגדים. סמלים אלו מייצגים הוראות טיפול בבד: טמפרטורת כביסה, ייבוש, גיהוץ, הלבנה וניקוי יבש. מומלץ לעיין בטבלה לפני כל כביסה חדשה.
+          </div>
+          <div style="color:#b5c6d6; font-size:0.98em; margin-bottom:0.5em; text-align:center;">
+            לתצוגה ברורה: לחצו על התמונה להגדלה.
+          </div>
         </div>
-        <div class="faq-question">
-          <span>🧽 איך מסירים כתמים קשים במיוחד?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="faq-answer">
-          ערבבו כף סודה לשתיה עם מעט סבון כלים עדין, מרחו על הכתם, המתינו 10 דקות, שפשפו בעדינות והכניסו למכונה.
-        </div>
-        <div class="faq-question">
-          <span>🧂 איך מסירים ריחות לא נעימים מהכביסה?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="faq-answer">
-          הוסיפו כף סודה לשתיה לאבקת הכביסה – זה מנטרל ריחות לא נעימים.
-        </div>
-        <div class="faq-question">
-          <span>🧑‍🔧 מה הדרך הכי טובה לעשות כביסה?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="faq-answer">
-          פשוט תנו לבעל לעשות את הכביסה 😉 (ואם אין בעל – אפשר גם לבד, עם המדריך שלנו!) <strong>המלצה של שירי 💡</strong>
-        </div>
-        <!-- אפשר להוסיף כאן עוד שאלות ותשובות באותו מבנה -->
       </div>
-    </div>
-
-    <div style="text-align:center; color:#b5c6d6; font-size:0.98em; margin-top:2.2em;">
-      פותח ע"י דיאגו סוצ'רסוק
+      <div style="text-align:center; color:#b5c6d6; font-size:0.98em; margin-top:2.2em;">
+        פותח ע"י דיאגו סוצ'רסוק
+      </div>
     </div>
   </div>
+  <style>
+    /* תמונת טבלת כביסה - פופאפ הגדלה */
+    .laundry-modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(30,40,60,0.65);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.25s;
+    }
+    .laundry-modal-img {
+      max-width: 96vw;
+      max-height: 92vh;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #4a90e2aa;
+      background: #fff;
+      transition: box-shadow 0.2s;
+      cursor: zoom-out;
+      border: 2px solid #e3eaf2;
+      animation: fadeIn 0.25s;
+    }
+    @media (max-width: 600px) {
+      .laundry-modal-img {
+        max-width: 99vw;
+        max-height: 80vh;
+      }
+    }
+  </style>
+  <script>
+    // פופאפ הגדלה לתמונת טבלת הכביסה
+    document.addEventListener('DOMContentLoaded', function() {
+      var img = document.getElementById('laundry-img');
+      if (img) {
+        img.addEventListener('click', function(e) {
+          e.preventDefault();
+          // צור אלמנט רקע
+          var bg = document.createElement('div');
+          bg.className = 'laundry-modal-bg';
+          // צור תמונה מוגדלת
+          var bigImg = document.createElement('img');
+          bigImg.src = img.src;
+          bigImg.alt = img.alt;
+          bigImg.className = 'laundry-modal-img';
+          bg.appendChild(bigImg);
+          // סגור בלחיצה
+          bg.addEventListener('click', function() {
+            document.body.removeChild(bg);
+          });
+          document.body.appendChild(bg);
+        });
+      }
+    });
+  </script>
 
   <script>
     // טאבס
     function showTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
       document.getElementById(tabId).classList.add('active');
     }
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        showTab(btn.dataset.tab);
-      });
-    });
 
     // מידע לסוגי כביסה
     const data = {
@@ -575,7 +870,7 @@ select {
   formData.append('tip', tip);
   formData.append('email', email);
   formData.append('name', name);
-  fetch('https://script.google.com/macros/s/AKfycbzHIBMgGpC5h5eLUYwqkhimWMfjWUFl8tbEEzyIQrM6JKlufF6OX_hB4EKQXhrJh7KmTA/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbxEZfzPqtFv9mzSAF94zVxsNwkfdQ2F_y1dhw3ZJMUxnBcRpsHSWYKKYoM2eEheUqxbTQ/exec', {
     method: 'POST',
     body: formData
   })
@@ -600,6 +895,39 @@ document.querySelectorAll('.faq-question').forEach(q => {
     q.classList.toggle('open');
   });
 });
+
+// Sidebar navigation logic
+  function updateTabTitleFromSidebar(tabId) {
+    // Find the sidebar-link with the matching data-tab
+    var link = document.querySelector('.sidebar-link[data-tab="' + tabId + '"]');
+    if (link) {
+      var main = link.querySelector('.sidebar-main');
+      if (main) {
+        document.getElementById('tab-title').textContent = main.textContent;
+      }
+    }
+  }
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', function() {
+      // Highlight sidebar
+      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      // Switch tab
+      const tab = this.getAttribute('data-tab');
+      showTab(tab);
+      updateTabTitleFromSidebar(tab);
+    });
+  });
+  // Set initial tab title on load
+  document.addEventListener('DOMContentLoaded', function() {
+    var active = document.querySelector('.sidebar-link.active');
+    if (active) {
+      var main = active.querySelector('.sidebar-main');
+      if (main) {
+        document.getElementById('tab-title').textContent = main.textContent;
+      }
+    }
+  });
   </script>
 </body>
 </html>
