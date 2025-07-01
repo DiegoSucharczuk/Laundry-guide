@@ -570,11 +570,11 @@ select {
   e.preventDefault();
   const tip = document.getElementById('userTipInput').value;
   const email = document.getElementById('userTipEmail').value;
-  const name = document.getElementById('userTipName').value; // חדש
+  const name = document.getElementById('userTipName').value;
   const formData = new FormData();
   formData.append('tip', tip);
   formData.append('email', email);
-  formData.append('name', name); // חדש
+  formData.append('name', name);
   fetch('https://script.google.com/macros/s/AKfycbzHIBMgGpC5h5eLUYwqkhimWMfjWUFl8tbEEzyIQrM6JKlufF6OX_hB4EKQXhrJh7KmTA/exec', {
     method: 'POST',
     body: formData
