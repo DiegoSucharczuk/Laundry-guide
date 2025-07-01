@@ -322,6 +322,7 @@ select {
         <h3 style="margin-bottom:0.5em; color:#2a3d4c; font-size:1.1em;">יש לכם טיפ מנצח? שלחו לנו!</h3>
         <form id="userTipForm" onsubmit="sendUserTip(event)" style="margin-bottom:0.5em;">
           <textarea id="userTipInput" placeholder="כתבו כאן את הטיפ שלכם..." required style="width:100%; min-height:60px; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;"></textarea>
+          <input type="text" id="userTipName" placeholder="שם (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
           <input type="email" id="userTipEmail" placeholder="אימייל (לא חובה)" style="width:100%; margin-top:0.5em; border-radius:8px; border:1px solid #b5c6d6; padding:0.7em; font-family:inherit; font-size:1em;" />
           <button type="submit" style="margin-top:0.7em; background:linear-gradient(90deg,#4a90e2 0%,#50e3c2 100%); color:#fff; border:none; border-radius:8px; padding:0.7em 1.3em; font-size:1.08em; font-weight:bold; cursor:pointer; box-shadow:0 2px 8px #e3eaf2;">שלח טיפ</button>
         </form>
@@ -569,10 +570,12 @@ select {
   e.preventDefault();
   const tip = document.getElementById('userTipInput').value;
   const email = document.getElementById('userTipEmail').value;
+  const name = document.getElementById('userTipName').value; // חדש
   const formData = new FormData();
   formData.append('tip', tip);
   formData.append('email', email);
-  fetch('https://script.google.com/macros/s/AKfycbw_CcO5zTlaz_wYw2N2OOJq5zdNyNCBB5QhMJWLYBbBHYjLHQkhr3v5H3LF7o2lF7g0Nw/exec', {
+  formData.append('name', name); // חדש
+  fetch('https://script.google.com/macros/s/AKfycbzHIBMgGpC5h5eLUYwqkhimWMfjWUFl8tbEEzyIQrM6JKlufF6OX_hB4EKQXhrJh7KmTA/exec', {
     method: 'POST',
     body: formData
   })
